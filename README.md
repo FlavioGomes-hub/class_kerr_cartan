@@ -1,7 +1,7 @@
 CLASS: Cosmic Linear Anisotropy Solving System  {#mainpage}
 ==============================================
 
-Edit : https://github.com/FlavioGomes-hub/class_kerr_cartan/blob/main/README.md#class---kerr-cartan-cosmological-model
+Edit : (CLASS - Kerr-Cartan Cosmological Model)[https://github.com/FlavioGomes-hub/class_kerr_cartan/blob/main/README.md#class---kerr-cartan-cosmological-model]
 
 Authors: Julien Lesgourgues, Thomas Tram, Nils Schoeneberg
 

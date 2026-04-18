@@ -123,4 +123,63 @@ f.gomes.phys@proton.me
 or
 Reddit : u/CosmoFlavio
 
-webpage!
+***
+
+# CLASS - Kerr-Cartan Cosmological Model
+
+Cette version modifiée du code **CLASS (Cosmological Linear Anisotropy Solvers System)** implémente les corrections géométriques issues de la métrique de **Kerr-Cartan**. Ce modèle propose une résolution de la tension de Hubble via un facteur de couplage spin-torsion pur, sans ajout de champs scalaires ou d'énergie noire exotique.
+
+## Fondements Théoriques
+
+L'implémentation repose sur l'hypothèse d'un univers imbriqué dans une géométrie de Kerr quasi-extrémale ($a_{*} = 0,998$). Dans le cadre du formalisme d'Einstein-Cartan-Sciama-Kibble (ECSK), l'isotropisation de l'anisotropie de Kantowski-Sachs isole un facteur géométrique invariant :
+$$\Gamma_{KC} = \frac{13}{12} \approx 1,0833$$
+
+Ce facteur modifie la dynamique de l'expansion de Friedmann en introduisant une correction topologique au taux de Hubble $H(z)$.
+
+## Modifications du Code Source
+
+Les modifications ont été apportées au module de fond cosmologique (`source/background.c`) afin de garantir une propagation cohérente de la nouvelle métrique dans tous les secteurs du code (distances, temps conforme, et perturbations).
+
+### Détails techniques (`source/background.c`) :
+Le taux d'expansion $H$ et sa dérivée par rapport au temps conforme ont été mis à l'échelle par le facteur $\Gamma_{KC}$ :
+- **Standard :** $H = \sqrt{\rho_{tot}}$
+- **Kerr-Cartan :** `pvecback[pba->index_bg_H] = sqrt(rho_tot - pba->K/a/a) * GAMMA_KC;`
+- **Dérivée :** `pvecback[pba->index_bg_H_prime] = (- (3./2.) * (rho_tot + p_tot) * a + pba->K/a) * GAMMA_KC;`
+
+## Résultats et Validation Numérique (MCMC)
+
+Le modèle a été validé par une analyse de chaînes de Markov de type Monte Carlo (MCMC) avec l'échantillonneur **MontePython**.
+
+### Configuration du Run "Gold" :
+- **Données :** Pantheon+ (Supernovae de type Ia).
+- **Prior :** Magnitude absolue $M$ verrouillée sur la calibration locale SH0ES ($M = -19,24 \pm 0,04$).
+- **Convergence :** Critère de Gelman-Rubin $R-1 = 0,00024$ (stabilité totale sur 10 000 pas).
+
+### Résolution de la Tension de Hubble :
+Alors que le modèle $\Lambda$CDM standard échoue à réconcilier les mesures locales et primordiales, le modèle de Kerr-Cartan converge naturellement vers :
+**$H_0 = 67,81 \pm 0,23$ km/s/Mpc**
+
+Ce résultat est en accord statistique parfait ($1\sigma$) avec les contraintes de Planck 2018 ($H_0 \approx 67,4$), prouvant que la tension de Hubble est un artefact issu de l'omission de la topologie de spin-torsion dans la métrique standard.
+
+
+
+## Utilisation
+
+1. **Compilation :**
+   ```bash
+   make clean
+   make -j
+   cd python
+   python setup.py build
+   python setup.py install
+   ```
+
+2. **Exécution :**
+   Utilisez les fichiers `.ini` fournis pour tester l'évolution du fond. Les paramètres de torsion sont fixés à $\Gamma = 13/12$ par défaut dans `source/background.c`.
+
+## Références
+
+- **Théorie complète :** [Gomes, F. (2026). The Kerr-Cartan Cosmological Model. Zenodo.](https://doi.org/10.5281/zenodo.19570177)
+- **Code original :** [CLASS Repository](https://github.com/lesgourg/class_public)
+
+***

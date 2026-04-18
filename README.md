@@ -115,6 +115,12 @@ Support
 
 To get support, please open a new issue on the
 
-https://github.com/lesgourg/class_public
+https://github.com/lesgourg/class_public 
+
+or me 
+
+f.gomes.phys@proton.me
+or
+Reddit : u/CosmoFlavio
 
 webpage!

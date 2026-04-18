@@ -114,6 +114,8 @@
 
 #include "background.h"
 
+#define GAMMA_KC (13.0/12.0)
+
 /**
  * Background quantities at given redshift z.
  *
@@ -576,10 +578,10 @@ int background_functions(
       only place where the Friedmann equation is assumed. Remember
       that densities are all expressed in units of \f$ [3c^2/8\pi G] \f$, ie
       \f$ \rho_{class} = [8 \pi G \rho_{physical} / 3 c^2]\f$ */
-  pvecback[pba->index_bg_H] = sqrt(rho_tot-pba->K/a/a);
+  pvecback[pba->index_bg_H] = sqrt(rho_tot-pba->K/a/a) / GAMMA_KC;
 
   /** - compute derivative of H with respect to conformal time */
-  pvecback[pba->index_bg_H_prime] = - (3./2.) * (rho_tot + p_tot) * a + pba->K/a;
+  pvecback[pba->index_bg_H_prime] = (- (3./2.) * (rho_tot + p_tot) * a + pba->K/a) / GAMMA_KC;
 
   /* Total energy density*/
   pvecback[pba->index_bg_rho_tot] = rho_tot;

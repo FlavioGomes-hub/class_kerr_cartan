@@ -180,7 +180,7 @@ This result is in perfect statistical agreement ($1\sigma$) with the Planck 2018
 
 ## References
 
-- **Full paper:** [Gomes, F. (2026). The Kerr-Cartan Cosmological Model. Zenodo.](https://doi.org/10.5281/zenodo.19570177)
+- **Full paper:** [Gomes, F. (2026). The Kerr-Cartan Cosmological Model. Zenodo.](https://doi.org/10.5281/zenodo.19658554)
 - **Original code:** [CLASS Repository](https://github.com/lesgourg/class_public)
 
 ***

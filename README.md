@@ -119,7 +119,7 @@ To get support, please open a new issue on the
 
 https://github.com/lesgourg/class_public 
 
-or me 
+or Flavio Gomes
 
 f.gomes.phys@proton.me
 or

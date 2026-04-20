@@ -1,4 +1,4 @@
-CLASS: Cosmic Linear Anisotropy Solving System  {#mainpage}
+CLASS: Cosmic Linear Anisotropy Solving System 
 ==============================================
 
  - Edit version of CLASS : [CLASS - Kerr-Cartan Cosmological Model](https://github.com/FlavioGomes-hub/class_kerr_cartan/blob/main/README.md#class---kerr-cartan-cosmological-model)
